@@ -18,10 +18,10 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: "Restore dependencies"
-      run: dotnet restore
+      run: dotnet restore ${{ github.workspace }}/MLSGrid/MLSGrid.sln
       
     - name: "Build"
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build ${{ github.workspace }}/MLSGrid/MLSGrid.sln --no-restore --configuration Release
       
     #- name: "Set Username Secret"
     #  run: dotnet user-secrets set "PDGA:UserName" "${{secrets.PDGAUserName}}" --project "${{ github.workspace }}/PDGAApi.Net.Tests/PDGAApi.Net.Tests.csproj"
@@ -33,7 +33,7 @@ jobs:
     #  run: dotnet test --no-restore --verbosity normal
       
     - name: "Pack"
-      run: dotnet pack --configuration Release
+      run: dotnet pack ${{ github.workspace }}/MLSGrid/MLSGrid.sln --configuration Release
       
     #- name: "Publish On Version Change"
     #  id: publish_nuget
